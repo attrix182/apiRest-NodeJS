@@ -3,10 +3,10 @@ const item = {};
 var mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: '192.168.2.176',
-    user: 'inv',
-    password: '1234',
-    database: 'inventario' //Name DB
+    host: 'sql10.freesqldatabase.com',
+    user: 'sql10430807',
+    password: 'sCvCZRCaBa',
+    database: 'sql10430807' //Name DB
 });
 
 item.test = (req, res) => {
