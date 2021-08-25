@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
     host: 'sql533.main-hosting.eu',
     user: 'u716697139_test',
     password: 'Admin123',
-    database: 'inventario' //Name DB
+    database: 'u716697139_test' //Name DB
 });
 
 item.test = (req, res) => {
