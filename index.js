@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 
 
-const post = require('./post.js');
+const item = require('./item.js');
 
 //const config = require('./config.js');
 
@@ -29,19 +29,19 @@ app.use(cors(
 ));
 
 
-app.post('/api/posts', post.add); //Add post
+app.post('/api/items', item.add); //Add item
 
-app.get('/api/posts', post.list); //Get posts
+app.get('/api/items', item.list); //Get items
 
-app.get('/api/posts/:id', post.listID);  //Get post where ID
-
-
-app.delete('/api/posts/:id', post.deleteID); //Delete post for id
+app.get('/api/items/:id', item.listID);  //Get item where ID
 
 
-app.put('/api/posts/:id', post.modID); //Moddify post for id
+app.delete('/api/items/:id', item.deleteID); //Delete item for id
 
-app.put('/api', post.test); //Moddify post for id
+
+app.put('/api/items/:id', item.modID); //Moddify item for id
+
+app.put('/api', item.test); //Moddify item for id
 
 const port = process.env.PORT || 3000;
 

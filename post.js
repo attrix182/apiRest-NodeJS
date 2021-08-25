@@ -1,15 +1,15 @@
-const post = {};
+const item = {};
 
 var mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: 'sql10.freesqldatabase.com',
-    user: 'sql10430807',
-    password: 'sCvCZRCaBa',
-    database: 'sql10430807' //Name DB
+    host: '156.67.72.235',
+    user: 'u716697139_test',
+    password: 'Admin123',
+    database: 'inventario' //Name DB
 });
 
-post.test = (req, res) => {
+item.test = (req, res) => {
 
     res.send('test OK')
 
@@ -17,9 +17,9 @@ post.test = (req, res) => {
 
 
 
-post.list = (req, res) => {
+item.list = (req, res) => {
 
-    const sql = 'SELECT * FROM posts'
+    const sql = 'SELECT * FROM items'
 
     connection.query(sql, (error, results) => {
         if (error) throw error;
@@ -32,10 +32,10 @@ post.list = (req, res) => {
 };
 
 
-post.listID = (req, res) => {
+item.listID = (req, res) => {
 
     const { id } = req.params;
-    const sql = `SELECT * FROM posts WHERE ID = ${id}`
+    const sql = `SELECT * FROM items WHERE ID = ${id}`
 
     connection.query(sql, (error, results) => {
         if (error) throw error;
@@ -49,19 +49,18 @@ post.listID = (req, res) => {
 
 };
 
-post.add = (req, res) => {
+item.add = (req, res) => {
 
-    const sql = 'INSERT INTO posts SET ?'
+    const sql = 'INSERT INTO items SET ?'
 
-    const newpost = {
-        titulo: req.body.titulo,
-        subtitulo: req.body.subtitulo,
-        contenido: req.body.contenido,
-        fecha: req.body.fecha
+    const newitem = {
+        nombre: req.body.nombre,
+        descripcion: req.body.descripcion,
+        cantidad: req.body.cantidad
     }
 
 
-    connection.query(sql, newpost, error => {
+    connection.query(sql, newitem, error => {
         if (error) throw error;
 
         res.send("OK");
@@ -70,34 +69,34 @@ post.add = (req, res) => {
 
 };
 
-post.deleteID = (req, res) => {
+item.deleteID = (req, res) => {
 
 
     const { id } = req.params;
 
-    const sql = `DELETE FROM posts WHERE ID = ${id}`
+    const sql = `DELETE FROM items WHERE ID = ${id}`
 
     connection.query(sql, (error, results) => {
 
         if (error) console.log(error);
 
-        res.send('post eliminado')
+        res.send('Item eliminado')
 
     })
 
 };
 
-post.modID = (req, res) => {
+item.modID = (req, res) => {
 
 
     const { id } = req.params;
     const { nombre, correo, apellido, clave } = req.body;
-    const sql = `UPDATE posts SET correo = '${correo}', clave = '${clave}', nombre = '${nombre}', apellido = '${apellido}' WHERE id = '${id}'`
+    const sql = `UPDATE items SET correo = '${correo}', clave = '${clave}', nombre = '${nombre}', apellido = '${apellido}' WHERE id = '${id}'`
 
     connection.query(sql, (error, results) => {
         if (error) throw error;
 
-        res.send('posts modificado')
+        res.send('items modificado')
 
 
     })
@@ -114,4 +113,4 @@ function capitalize(word) {
 
 
 
-module.exports = post;
+module.exports = item;
