@@ -35,7 +35,7 @@ item.list = (req, res) => {
 item.listID = (req, res) => {
 
     const { id } = req.params;
-    const sql = `SELECT * FROM items WHERE ID = ${id}`
+    const sql = `SELECT * FROM inventario WHERE ID = ${id}`
 
     connection.query(sql, (error, results) => {
         if (error) throw error;
@@ -51,7 +51,7 @@ item.listID = (req, res) => {
 
 item.add = (req, res) => {
 
-    const sql = 'INSERT INTO items SET ?'
+    const sql = 'INSERT INTO inventario SET ?'
 
     const newitem = {
         nombre: req.body.nombre,
@@ -74,7 +74,7 @@ item.deleteID = (req, res) => {
 
     const { id } = req.params;
 
-    const sql = `DELETE FROM items WHERE ID = ${id}`
+    const sql = `DELETE FROM inventario WHERE ID = ${id}`
 
     connection.query(sql, (error, results) => {
 
@@ -91,12 +91,12 @@ item.modID = (req, res) => {
 
     const { id } = req.params;
     const { nombre, correo, apellido, clave } = req.body;
-    const sql = `UPDATE items SET correo = '${correo}', clave = '${clave}', nombre = '${nombre}', apellido = '${apellido}' WHERE id = '${id}'`
+    const sql = `UPDATE inventario SET correo = '${correo}', clave = '${clave}', nombre = '${nombre}', apellido = '${apellido}' WHERE id = '${id}'`
 
     connection.query(sql, (error, results) => {
         if (error) throw error;
 
-        res.send('items modificado')
+        res.send('inventario modificado')
 
 
     })
