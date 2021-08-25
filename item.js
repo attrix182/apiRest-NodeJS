@@ -4,7 +4,7 @@ var mysql = require('mysql');
 
 const connection = mysql.createConnection({
     host: 'sql533.main-hosting.eu',
-    user: 'u716697139_test',
+    user: 'u716697139_admin',
     password: 'Admin123',
     database: 'u716697139_test' //Name DB
 });
@@ -19,7 +19,7 @@ item.test = (req, res) => {
 
 item.list = (req, res) => {
 
-    const sql = 'SELECT * FROM items'
+    const sql = 'SELECT * FROM inventario'
 
     connection.query(sql, (error, results) => {
         if (error) throw error;
