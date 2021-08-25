@@ -3,7 +3,7 @@ const item = {};
 var mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: '156.67.72.235',
+    host: 'sql533.main-hosting.eu',
     user: 'u716697139_test',
     password: 'Admin123',
     database: 'inventario' //Name DB
